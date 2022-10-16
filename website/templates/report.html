@@ -11,47 +11,45 @@
 
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary" style="border-bottom-right-radius:2rem !important;border-bottom-left-radius: 2rem !important;">
             <div class="container nav-space">
-                <a class="navbar-brand" href="/dashboard">
-                    <i class="bi bi-laptop" role="img" aria-label="Logo"></i>
-                    Lit Meter
-                </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <img class="mx-auto justify-content-center" src="/static/images/TrashDashLogo.png" width="20%" height="20%" style="margin-top: 2%;margin-bottom: 2%;cursor:pointer;" alt="TrashDash Logo" onclick="window.location.href='/'" >
 
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="nav navbar-nav ms-auto">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                    <ul class="nav navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                            <a class="nav-link" href="/dashboard">dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/report">Report</a>
+                            <a class="nav-link active" href="/report">report</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/resolve">Resolve</a>
+                            <a class="nav-link" href="/resolve">resolve</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/donate">Donate</a>
+                            <a class="nav-link" href="/donate">donate</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Log Out</a>
+                            <a class="nav-link" href="/logout">log out</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
 
     <div class="container body-content">
-        <div class="row" style="margin-top: 5%;  margin-bottom: 3%;">
-            <h1 style="text-align: center; margin-bottom: 2%;">Welcome to the LitMeter!</h1>
-            <p>Litmeter makes picking up litter fun!</p>
+        <div class="row" style="margin-top: 7%;  margin-bottom: 3%;">
+            <h1 style="text-align: center;">Welcome to the TrashDash report page!</h1>
+            <p style="text-align: center;">Report littered places! (Automatic litter detection from outdoor surveillance cameras coming soon!)</p>
         </div>
-        <div class="row" style="margin-top: 5%;  margin-bottom: 3%;">
+        <div class="row" style="margin-top: 2%;  margin-bottom: 3%;">
             <div class="col-sm-8">
                 <div id="map">
                     <script>
@@ -126,10 +124,6 @@
                 <input type="hidden" name="_next" value="done.html">
             </div>
         </div>
-        <hr>
-        <footer>
-            <p>© 2022 - Jeffery Hu</p>
-        </footer>
     </div>
 
     </form>

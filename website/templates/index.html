@@ -10,29 +10,22 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
             <div class="container nav-space">
-                <a class="navbar-brand" href="/">
-                    <i class="bi bi-laptop" role="img" aria-label="Logo"></i>
-                    Lit Meter
-                </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="nav navbar-nav ms-auto">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                    <ul class="nav navbar-nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/login">log in</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Log In</a>
+                            <a class="nav-link" href="/sign-up">sign up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/sign-up">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/report">Report</a>
+                            <a class="nav-link" href="/report">report</a>
                         </li>
                     </ul>
                 </div>
@@ -40,17 +33,18 @@
         </nav>
     </header>
 
-    <div class="container-fluid bg-primary py-5 rounded-bottom">
+    <div class="container-fluid bg-primary py-5" style="border-bottom-right-radius:2rem !important;border-bottom-left-radius: 2rem !important;">
         <div class="container ">
-                <img class="rounded mx-auto d-block" src="/static/images/TrashDashLogo.png" width="60%" height="60%" alt="Trash Dash Logo">
-                <div class="row" style="margin-top: 5%;  margin-bottom: 3%; color:rgb(255, 255, 255); font-size:80px;">
+                <img class="rounded mx-auto d-block" src="/static/images/TrashDashLogo.png" width="60%" height="60%" style="margin-top: 3%;" alt="TrashDash Logo">
+                <div class="row" style="margin-top: 3%;  margin-bottom: 1%; color: rgba(254, 249, 223, 0.8);
+                ; font-size:80px;">
                     <h1 style="text-align: center; margin-bottom: 2%;">clean the litter, climb the ranks</h1>
                 </div>
         </div>
     </div>
 
     <div class="container body-content">
-        <p>Litmeter makes picking up litter fun!</p>
+        <p>TrashDash makes picking up litter fun!</p>
        
         <div class="row" style="margin-top: 2%;">
             <div id="welcomeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -109,12 +103,6 @@
                 </button>
             </div>
         </div>
-
-
-        <hr>
-        <footer>
-            <p>© 2022 - Jeffery Hu</p>
-        </footer>
     </div>
 
     </form>
