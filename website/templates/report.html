@@ -80,14 +80,13 @@
                                 .openOn(map);
                             console.log(e);
 
-                            //document.getElementById('long').innerHTML = e.latlng.lng;
-                            //document.getElementById('lat').innerHTML = e.latlng.lat;
+                            document.getElementById('long').innerHTML = e.latlng.lng;
+                            document.getElementById('lat').innerHTML = e.latlng.lat;
                         }
 
                         map.on('click', onMapClick);
 
-                        var marker = L.marker([43.7869394036554, -79.18947306043347], { icon: litterIcon }).addTo(map);
-                        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+                        
                     </script>
                 </div>
             </div>
@@ -114,21 +113,13 @@
                         value="" required>
                     <div class="invalid-feedback">
                         Valid number is required.
-                    </div>
-
-                    <label for="longitude" class="form-label" style="margin-top: 2%">Longitude</label>
-                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Enter longitude"/>
+                    </div>                    
                     
-                    <label for="latitude" class="form-label" style="margin-top: 2%">Latitude</label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Enter latitude"/>
-                    
-                    <!--
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
                     <div id="long"></div>
 
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
                     <div id="lat"></div>
-                    -->
 
                     <button type="submit" class="btn btn-default mt-5" id="sendMessage"
                         style="margin-left: 47%; margin-top: 10%">Submit</button>
