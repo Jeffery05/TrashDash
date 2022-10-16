@@ -1,28 +1,5 @@
-<!DOCTYPE html>
-
-<html lang="en"
-    class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
-
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSNW351X1J"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-XSNW351X1J');
-    </script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <title>Home Page</title>
-    <script src="/static/modernizr-2.8.3.js"></script>
-    <link href="/static/bootstrap.css" rel="stylesheet">
-    <link href="/static/Site.css" rel="stylesheet">
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-</head>
+{% extends "layout.html" %}
+{% block content %}
 
 <body>
 
@@ -66,7 +43,7 @@
     <div class="container-fluid jumbotron jumbotron-welcome py-5">
         <div class="container">
             <h1
-                style="text-align:center; font-size:100px; color:rgb(18, 159, 44); font-family: verdana; padding-top: 10%">
+                style="text-align:center; font-size:100px; color:rgb(18, 159, 44); padding-top: 10%">
                 WELCOME!</h1>
         </div>
     </div>
@@ -149,3 +126,5 @@
 </body>
 
 </html>
+
+{% endblock content %}
