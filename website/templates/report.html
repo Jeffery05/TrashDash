@@ -11,14 +11,17 @@
 
 
     <header>
-       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary" style="border-bottom-right-radius:2rem !important;border-bottom-left-radius: 2rem !important;">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+            style="border-bottom-right-radius:2rem !important;border-bottom-left-radius: 2rem !important;">
             <div class="container nav-space">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <img class="mx-auto justify-content-center" src="/static/images/TrashDashLogo.png" width="20%" height="20%" style="margin-top: 2%;margin-bottom: 2%;cursor:pointer;" alt="TrashDash Logo" onclick="window.location.href='/'" >
+                <img class="mx-auto justify-content-center" src="/static/images/TrashDashLogo.png" width="20%"
+                    height="20%" style="margin-top: 2%;margin-bottom: 2%;cursor:pointer;" alt="TrashDash Logo"
+                    onclick="window.location.href='/'">
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                     <ul class="nav navbar-nav ">
@@ -45,9 +48,11 @@
     </header>
 
     <div class="container body-content">
+
         <div class="row" style="margin-top: 7%;  margin-bottom: 3%;">
             <h1 style="text-align: center;">Welcome to the TrashDash report page!</h1>
-            <p style="text-align: center;">Report littered places! (Automatic litter detection from outdoor surveillance cameras coming soon!)</p>
+            <p style="text-align: center;">Report littered places! (Automatic litter detection from outdoor surveillance
+                cameras coming soon!)</p>
         </div>
         <div class="row" style="margin-top: 2%;  margin-bottom: 3%;">
             <div class="col-sm-8">
@@ -87,41 +92,41 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <h2>Information</h2>
-                <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
-                <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
-                <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
-                <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
-                <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
-                
-                <br>
+                <form method="POST">
+                    <h2>Information</h2>
+                    <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
+                    <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
+                    <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
+                    <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
+                    <img src="/static/Images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
 
-                <label for="title" class="form-label" style="margin-top: 2%">Title</label>
-                <input name="title" type="text" class="form-control" id="title" placeholder="Title" value="" required>
-                <div class="invalid-feedback">
-                    Valid number is required.
-                </div>
+                    <br>
 
-                <label for="message" class="form-label" style="margin-top: 2%">Description</label>
-                <input name="message" type="text" class="form-control" id="description" placeholder="Description"
-                    value="" required>
-                <div class="invalid-feedback">
-                    Valid number is required.
-                </div>
+                    <label for="title" class="form-label" style="margin-top: 2%">Title</label>
+                    <input name="title" type="text" class="form-control" id="title" placeholder="Title" value=""
+                        required>
+                    <div class="invalid-feedback">
+                        Valid number is required.
+                    </div>
 
-                <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
-                <div id="long"></div>
+                    <label for="message" class="form-label" style="margin-top: 2%">Description</label>
+                    <input name="message" type="text" class="form-control" id="description" placeholder="Description"
+                        value="" required>
+                    <div class="invalid-feedback">
+                        Valid number is required.
+                    </div>
 
-                <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
-                <div id="lat"></div>
+                    <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
+                    <div id="long"></div>
 
-                <label for="uploadFile" class="form-label" style="margin-top: 3%">Upload Picture of Litter</label>
-                <input name="attachment" accept="image/png, image/jpeg" class="form-control" type="file"
-                    id="uploadFile">
+                    <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
+                    <div id="lat"></div>
 
-                <button type="submit" class="btn btn-default mt-5" id="sendMessage"
-                    style="margin-left: 47%; margin-top: 10%">Submit</button>
-                <input type="hidden" name="_next" value="done.html">
+                    <button type="submit" class="btn btn-default mt-5" id="sendMessage"
+                        style="margin-left: 47%; margin-top: 10%">Submit</button>
+                    <input type="hidden" name="_next" value="done.html">
+                </form>
+
             </div>
         </div>
     </div>
