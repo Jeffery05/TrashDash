@@ -13,7 +13,7 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        user = User.query.filter_by(username=username)
+        user = User.query.filter_by(username=username).one()
         print(str(user))
         if user:
             if check_password_hash(user.password, password):
