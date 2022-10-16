@@ -19,7 +19,7 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
-    from .models import User, Report
+    #from .models import User, Report
 
     #create_database(app)
 
@@ -41,4 +41,5 @@ def create_database(app):
             db.create_all()
         print('Created Database!')
 """
+
 from .models import User

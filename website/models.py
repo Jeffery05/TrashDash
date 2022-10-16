@@ -9,7 +9,7 @@ class Report(db.Model):
     longitude = db.Column(db.Float)
     latitude = db.Column(db.Float)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    picture_name = db.Column(db.String(150))
+    #picture_name = db.Column(db.String(150))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
 class User(db.Model, UserMixin):
@@ -17,4 +17,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(30), unique=True)
     username = db.Column(db.String(20), unique=True)
     password = db.Column(db.String(20))
+    litters_found = db.Column(db.Integer)
+    litters_cleaned = db.Column(db.Integer)
     reports = db.relationship('Report', backref="user")
