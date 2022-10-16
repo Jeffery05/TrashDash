@@ -12,7 +12,7 @@ def home():
     return render_template("index.html", user=current_user)
 
 @views.route("/dashboard")
-@login_required
+#@login_required
 def dashboard():
     return render_template("dashboard.html", user=current_user)
 
@@ -21,7 +21,7 @@ def donate():
     return render_template("donate.html", user=current_user)
 
 @views.route("/resolve", methods=["GET", "POST"])
-@login_required
+#@login_required
 def resolve():
     if request.method == "POST":
         title = request.form.get("title-text")
@@ -58,7 +58,7 @@ def resolve():
     return render_template("resolve.html", user=current_user)
 
 @views.route("/report", methods=["GET", "POST"])
-@login_required
+#@login_required
 def report():
     if request.method == "POST":
         title = request.form.get("title-text")
