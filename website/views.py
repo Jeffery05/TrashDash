@@ -7,7 +7,7 @@ views = Blueprint("views", __name__)
 def home():
     return render_template("index.html")
 
-@views.route("/c")
+@views.route("/dashboard")
 def dashboard():
     return render_template("dashboard.html")
 
