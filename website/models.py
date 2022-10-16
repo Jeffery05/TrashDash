@@ -17,4 +17,4 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(30), unique=True)
     username = db.Column(db.String(20))
     password = db.Column(db.String(20))
-    reports = db.relationship('Report')
+    reports = db.relationship('Report', backref="user")
