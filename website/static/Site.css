@@ -63,12 +63,12 @@ p {font-size: 18px;}
 }
 
 .btn-default{
-    background-color: rgb(9, 101, 26) !important;
+    background-color: rgba(90, 100, 53, 1) !important;
     color: rgb(255, 255, 255) !important;
 }
 
 .bg-primary {
-    background-color:rgb(9, 101, 26) !important;
+    background-color:rgba(90, 100, 53, 1) !important;
   }
 
 .card-footer{
