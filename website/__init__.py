@@ -6,32 +6,27 @@ from flask_login import LoginManager
 db = SQLAlchemy() #initializing a database
 DB_NAME = "database.db"
 
-def create_app():
-    app = Flask(__name__)
-    app.config["SECRET_KEY"] = "ff"
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
-    db.init_app(app)
-    #db.create_all()
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "ff"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+db.init_app(app)
+#db.create_all()
 
-    from .views import views
-    from .auth import auth
+from .views import views
+from .auth import auth
 
-    app.register_blueprint(views, url_prefix="/")
-    app.register_blueprint(auth, url_prefix="/")
+app.register_blueprint(views, url_prefix="/")
+app.register_blueprint(auth, url_prefix="/")
 
-    #from .models import User, Report
+#from .models import User, Report
 
-    #create_database(app)
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.init_app(app)
 
-    login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'
-    login_manager.init_app(app)
-
-    @login_manager.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
-
-    return app
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 #Figure out what we should do in the case that the database doesn't exist in its designated area.
 """
