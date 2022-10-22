@@ -80,13 +80,11 @@
                                 .openOn(map);
                             console.log(e);
 
-                            document.getElementById('long').innerHTML = e.latlng.lng;
-                            document.getElementById('lat').innerHTML = e.latlng.lat;
+                            document.getElementById('long').value = e.latlng.lng;
+                            document.getElementById('lat').value = e.latlng.lat;
                         }
 
                         map.on('click', onMapClick);
-
-                        
                     </script>
                 </div>
             </div>
@@ -116,10 +114,10 @@
                     </div>                    
                     
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
-                    <div id="long"></div>
+                    <input name="longitude" type="text" id="long" required></input>
 
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
-                    <div id="lat"></div>
+                    <input name="latitude" type="text" id="lat" required></input>
 
                     <button type="submit" class="btn btn-default mt-5" id="sendMessage"
                         style="margin-left: 47%; margin-top: 10%">Submit</button>
