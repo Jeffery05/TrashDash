@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy.sql import func
 import json
 import time
+import traceback
 
 views = Blueprint("views", __name__)
 
@@ -67,24 +68,29 @@ def report():
         lat = request.form.get("latitude")
 
         try:
-            float(long)
-            temp_num = long
+            temp_num = float(long)
             long = round(temp_num * 100000)/100000.0
-            float(lat)
-            temp_num = lat
+            temp_num = float(lat)
             lat = round(temp_num * 100000)/100000.0
             if len(title) > 100:
                 flash("Title must be less than 101 characters.", category="error")
             elif len(msg) > 250:
                 flash("Description must be less than 251 characters.", category="error")
             else:
-                new_report = Report(title=title, description=msg, longitude=long, latitude=lat, date=func.now())
+                user = User.query.filter_by(username=current_user.username).first()
+                
+                if not user.litters_found:
+                    user.litters_found = 1
+                else:
+                    user.litters_found = user.litters_found + 1
+
+                new_report = Report(title=title, description=msg, longitude=long, latitude=lat, user_id=user.id, date=func.now())
                 db.session.add(new_report)
                 db.session.commit() #updates the database
-                user = User.query.filter_by(username=current_user.username).first()
-                user.litters_found = user.litters_found + 1
+                
                 flash("Thank you for the reporting trash!", category="success")
         except:
+            print(traceback.format_exc())
             flash("Please make sure that the inputted values for the latitude and/or longitude are valid decimals.", category="error")
 
     time.sleep(0.1)
