@@ -100,14 +100,11 @@ def report():
     time.sleep(0.1)
     return render_template("report.html", user=current_user)
 
-def obj_dict(obj):
-    return obj.__dict__
-
 @views.route("/fetchLocations", methods=["GET", "POST"])
 def fetchLocations():
     reports = Report.query.all()
-    print(json.dumps(reports, default=obj_dict))
-    return Response(json.dumps(reports, default=obj_dict),  mimetype='application/json')
+    resp = "|".join([report.__repr__() for report in reports])
+    return Response(resp)
 
 from . import db
 from .models import User, Report

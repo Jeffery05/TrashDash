@@ -85,6 +85,13 @@
                         }
 
                         map.on('click', onMapClick);
+
+                        axios.get("/fetchLocations").then((res) => {
+                            console.log("Successfully fetched locations!");
+                            console.log(res.data);
+                        }).catch(() => {
+                            console.log("Error occured when fetching locations");
+                        });
                     </script>
                 </div>
             </div>
@@ -134,7 +141,6 @@
         </script>
     <script>
         document.getElementById("sendMessage").onclick = function () {
-            window.alert("Ping");
             console.log(urlParams.get('title'));
             axios.post('/location/add', {
                 title: 'Fred',

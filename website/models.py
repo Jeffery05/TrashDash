@@ -12,9 +12,9 @@ class Report(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     #picture_name = db.Column(db.String(150))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__, 
-            sort_keys=True, indent=4)
+    
+    def __repr__(self):
+        return f"{self.title}|{self.description}|{self.longitude}|{self.latitude}|{self.date}|"
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
