@@ -86,22 +86,30 @@
 
                         map.on('click', onMapClick);
 
-                        axios.get("/fetchLocations").then((res) => {
-                            console.log("Successfully fetched locations!");
-                            const array = res.data.split("|");
-                            console.log(array[2] + " array[3]:" + array[3]);
-                            console.log(res.data);
-                            var marker = L.marker([ array[2], array[3]], { icon: litterIcon }).addTo(map);
-                            marker.bindPopup("<b>Title: </b>" + array[0] + "<br>Description: " + array[1]).openPopup();
-                            /*for (let i = 0; i < res.length; i++) {
-                                var marker = L.marker([res[i][3], res[i][4]], { icon: litterIcon }).addTo(map);
-                                marker.bindPopup("<b>Title:</b>" + res[i][1] + "<br>Description: " + res[i][2]).openPopup();
-                            }*/
-                        }).catch(() => {
-                            console.log("Error occured when fetching locations");
-                        });
+                        // axios.get("/fetchLocations").then((res) => {
+                        //     console.log("Successfully fetched locations!");
+                        //     const array = res.data.split("|");
+                        //     console.log(array[2] + " array[3]:" + array[3]);
+                        //     console.log(res.data);
+                        //     var marker = L.marker([ array[2], array[3]], { icon: litterIcon }).addTo(map);
+                        //     marker.bindPopup("<b>Title: </b>" + array[0] + "<br>Description: " + array[1]).openPopup();
+                        //     /*for (let i = 0; i < res.length; i++) {
+                        //         var marker = L.marker([res[i][3], res[i][4]], { icon: litterIcon }).addTo(map);
+                        //         marker.bindPopup("<b>Title:</b>" + res[i][1] + "<br>Description: " + res[i][2]).openPopup();
+                        //     }*/
+                        // }).catch(() => {
+                        //     console.log("Error occured when fetching locations");
+                        // });
 
-
+                        var reports = [
+                            {% for report in reports %}
+                            {
+                                title: "{{ report.title }}", 
+                                description: "{{ report.description }}"
+                            },
+                            {% endfor %}
+                        ];
+                        console.log(reports);
                     </script>
                 </div>
             </div>

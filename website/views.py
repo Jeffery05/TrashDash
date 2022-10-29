@@ -98,7 +98,9 @@ def report():
             flash("Please make sure that the inputted values for the latitude and/or longitude are valid decimals.", category="error")
 
     time.sleep(0.1)
-    return render_template("report.html", user=current_user)
+
+    reports = Report.query.all()
+    return render_template("report.html", user=current_user, reports=reports)
 
 @views.route("/fetchLocations", methods=["GET", "POST"])
 def fetchLocations():
