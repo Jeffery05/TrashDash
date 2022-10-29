@@ -103,13 +103,22 @@
 
                         var reports = [
                             {% for report in reports %}
-                            {
-                                title: "{{ report.title }}", 
-                                description: "{{ report.description }}"
-                            },
-                            {% endfor %}
+                        {
+                            title: "{{ report.title }}",
+                                description: "{{ report.description }}",
+                                    longitude: "{{ report.longitude }}",
+                                        latitude: "{{ report.latitude }}"
+                        },
+                        {% endfor %}
                         ];
+
+
                         console.log(reports);
+                        console.log(reports[0].description);
+                        for (let i = 0; i < reports.length; i++) {
+                            var marker = L.marker([reports[i].latitude, reports[i].longitude], { icon: litterIcon }).addTo(map);
+                            marker.bindPopup("<b>Title: " + reports[i].title + "</b><br>Description: " + reports[i].description).openPopup();
+                        }
                     </script>
                 </div>
             </div>

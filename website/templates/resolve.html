@@ -80,8 +80,24 @@
 
                         map.on('click', onMapClick);
 
-                        var marker = L.marker([43.78694, -79.18947], { icon: litterIcon }).addTo(map);
-                        marker.bindPopup("<b>Title: Litter</b><br>Description: Coke Bottles").openPopup();
+                        var reports2 = [
+                            {% for report in reports2 %}
+                        {
+                            title: "{{ report.title }}",
+                                description: "{{ report.description }}",
+                                    longitude: "{{ report.longitude }}",
+                                        latitude: "{{ report.latitude }}"
+                        },
+                        {% endfor %}
+                        ];
+
+
+                        console.log(reports2);
+                        console.log(reports2[0].description);
+                        for (let i = 0; i < reports2.length; i++) {
+                            var marker = L.marker([reports2[i].latitude, reports2[i].longitude], { icon: litterIcon }).addTo(map);
+                            marker.bindPopup("<b>Title: " + reports2[i].title + "</b><br>Description: " + reports2[i].description).openPopup();
+                        }
                     </script>
                 </div>
             </div>
