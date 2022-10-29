@@ -88,10 +88,20 @@
 
                         axios.get("/fetchLocations").then((res) => {
                             console.log("Successfully fetched locations!");
+                            const array = res.data.split("|");
+                            console.log(array[2] + " array[3]:" + array[3]);
                             console.log(res.data);
+                            var marker = L.marker([ array[2], array[3]], { icon: litterIcon }).addTo(map);
+                            marker.bindPopup("<b>Title: </b>" + array[0] + "<br>Description: " + array[1]).openPopup();
+                            /*for (let i = 0; i < res.length; i++) {
+                                var marker = L.marker([res[i][3], res[i][4]], { icon: litterIcon }).addTo(map);
+                                marker.bindPopup("<b>Title:</b>" + res[i][1] + "<br>Description: " + res[i][2]).openPopup();
+                            }*/
                         }).catch(() => {
                             console.log("Error occured when fetching locations");
                         });
+
+
                     </script>
                 </div>
             </div>
@@ -107,19 +117,19 @@
                     <br>
 
                     <label for="title-text" class="form-label" style="margin-top: 2%">Title</label>
-                    <input name="title-text" type="text" class="form-control" id="title-text" placeholder="Title" value=""
-                        required>
+                    <input name="title-text" type="text" class="form-control" id="title-text" placeholder="Title"
+                        value="" required>
                     <div class="invalid-feedback">
                         Valid number is required.
                     </div>
 
                     <label for="message" class="form-label" style="margin-top: 2%">Description</label>
-                    <input name="message" type="text" class="form-control" id="message" placeholder="Message"
-                        value="" required>
+                    <input name="message" type="text" class="form-control" id="message" placeholder="Message" value=""
+                        required>
                     <div class="invalid-feedback">
                         Valid number is required.
-                    </div>                    
-                    
+                    </div>
+
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
                     <input name="longitude" type="text" id="long" required></input>
 
