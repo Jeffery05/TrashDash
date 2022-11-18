@@ -26,36 +26,49 @@ def donate():
     return render_template("donate.html", user=current_user)
 
 @views.route("/resolve", methods=["GET", "POST"])
-#@login_required
+@login_required
 def resolve():
     if request.method == "POST":
-        title = request.form.get("title-text")
-        msg = request.form.get("message")
+        #title = request.form.get("title-text")
+        #msg = request.form.get("message")
         long = request.form.get("longitude")
         lat = request.form.get("latitude")
 
         try:
+            temp_num = float(long)
+            long = round(temp_num * 100000)/100000.0
+            temp_num = float(lat)
+            lat = round(temp_num * 100000)/100000.0
+            """
             float(long)
             temp_num = long
             long = round(temp_num * 100000)/100000.0
             float(lat)
             temp_num = lat
             lat = round(temp_num * 100000)/100000.0
+            """
+            """
+            print(len(title) + " " + len(msg))
             if len(title) > 100:
                 flash("Title must be less than 101 characters.", category="error")
             elif len(msg) > 250:
                 flash("Description must be less than 251 characters.", category="error")
             else:
-                report_to_be_removed = db.Session.query(Report).filter_by(
-                    long.like(long),
-                    lat.like(lat)
-                ).first()
-                #report_to_be_removed = Report.query.filter_by(long=long).filter_by(lat=lat).first()
-                db.session.delete(report_to_be_removed)
-                db.session.commit() #updates the database
-                user = User.query.filter_by(username=current_user.username).first()
-                #user.litters_cleaned = user.litters_cleaned + 1
-                flash("Thank you for cleaning up the trash!", category="success")
+            """
+            user = User.query.filter_by(username=current_user.username).first()
+
+            if not user.litters_cleaned:
+                user.litters_cleaned = 1
+            else:
+                user.litters_cleaned = user.litters_cleaned + 1
+
+            report_to_be_removed = db.session.query(Report).filter_by(longitude=long, latitude=lat).first()
+            #print("We have reached this point successfully")
+            print(report_to_be_removed)
+            #report_to_be_removed = Report.query.filter_by(long=long).filter_by(lat=lat).first()
+            db.session.delete(report_to_be_removed)
+            db.session.commit() #updates the database
+            flash("Thank you for cleaning up the trash!", category="success")
         except:
             flash("Please make sure that the inputted values for the latitude and/or longitude are valid decimals.", category="error")
 
@@ -65,7 +78,7 @@ def resolve():
     return render_template("resolve.html", user=current_user, reports2=reports)
 
 @views.route("/report", methods=["GET", "POST"])
-#@login_required
+@login_required
 def report():
     if request.method == "POST":
         title = request.form.get("title-text")
