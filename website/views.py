@@ -60,7 +60,9 @@ def resolve():
             flash("Please make sure that the inputted values for the latitude and/or longitude are valid decimals.", category="error")
 
     time.sleep(0.1)
-    return render_template("resolve.html", user=current_user)
+
+    reports = Report.query.all()
+    return render_template("resolve.html", user=current_user, reports2=reports)
 
 @views.route("/report", methods=["GET", "POST"])
 #@login_required
