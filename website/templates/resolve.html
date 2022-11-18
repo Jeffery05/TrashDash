@@ -67,18 +67,9 @@
 
                         var popup = L.popup();
 
-                        function onMapClick(e) {
-                            popup
-                                .setLatLng(e.latlng)
-                                .setContent("You clicked the map at " + e.latlng.toString())
-                                .openOn(map);
-                            console.log(e);
+                       
 
-                            document.getElementById('long').innerHTML = e.latlng.lng;
-                            document.getElementById('lat').innerHTML = e.latlng.lat;
-                        }
-
-                        map.on('click', onMapClick);
+                        
 
                         var reports2 = [
                             {% for report in reports2 %}
@@ -95,8 +86,29 @@
                         console.log(reports2);
                         console.log(reports2[0].description);
                         for (let i = 0; i < reports2.length; i++) {
-                            var marker = L.marker([reports2[i].latitude, reports2[i].longitude], { icon: litterIcon }).addTo(map);
+                            var marker = L.marker([reports2[i].latitude, reports2[i].longitude], { icon: litterIcon }).addTo(map).on('click', onClick);
                             marker.bindPopup("<b>Title: " + reports2[i].title + "</b><br>Description: " + reports2[i].description).openPopup();
+                            console.log(marker);
+                        }
+
+                        function onClick(e){
+                            document.getElementById('long').value = e.latlng.lng;
+                            document.getElementById('lat').value = e.latlng.lat;
+                        }
+                        
+                        map.on('click', onMapClick);
+
+                        function onMapClick(e) {
+                            popup
+                                .setLatLng(e.latlng)
+                                .setContent("You clicked the map at " + e.latlng.toString())
+                                .openOn(map);
+                            console.log(e);
+                            
+                            document.getElementById('long').value = e.latlng.lng;
+                            document.getElementById('lat').value = e.latlng.lat;
+                            //document.getElementById('long').innerHTML = e.latlng.lng;
+                            //document.getElementById('lat').innerHTML = e.latlng.lat;
                         }
                     </script>
                 </div>
@@ -126,11 +138,11 @@
                         Valid number is required.
                     </div>
 
-                    <label for="longitude" class="form-label" style="margin-top: 2%">Longitude</label>
-                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Enter longitude"/>
-                    
-                    <label for="latitude" class="form-label" style="margin-top: 2%">Latitude</label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Enter latitude"/>
+                    <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
+                    <input name="longitude" type="text" id="long" required></input>
+
+                    <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
+                    <input name="latitude" type="text" id="lat" required></input>
                     
                     <!--
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
