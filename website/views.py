@@ -31,9 +31,17 @@ def donate():
         user = User.query.filter_by(username=current_user.username).first()
 
         try:
-            user.points = user.points - float(donationAMT)
-            print("Donated")
-            db.session.commit()
+            if (user.points < float(donationAMT)):
+                flash("You do not have sufficent funds to complete this transaction.", category="error")
+            else:
+                user.points = user.points - float(donationAMT)
+                if not user.donationValue:
+                    user.donationValue = float(donationAMT) / 100.0
+                else:
+                    user.donationValue = user.donationValue + (float(donationAMT) / 100.0)
+                print("Donated")
+                print(user.donationValue)
+                db.session.commit()
         except:
             flash("Please make sure you have sufficient funds.", category="error")
     time.sleep(0.1)
@@ -59,6 +67,10 @@ def resolve():
                 user.litters_cleaned = 1
             else:
                 user.litters_cleaned = user.litters_cleaned + 1
+
+            if not user.points:
+                user.points = 100
+            else:
                 user.points = user.points + 100
 
             report_to_be_removed = db.session.query(Report).filter_by(longitude=long, latitude=lat).first()
@@ -102,6 +114,10 @@ def report():
 
                 else:
                     user.litters_found = user.litters_found + 1
+
+                if not user.points:
+                    user.points = 100
+                else:
                     user.points = user.points + 100
 
                 new_report = Report(title=title, description=msg, longitude=long, latitude=lat, user_id=user.id, date=func.now())
