@@ -23,4 +23,5 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(20))
     litters_found = db.Column(db.Integer)
     litters_cleaned = db.Column(db.Integer)
+    points = db.Column(db.Integer)
     reports = db.relationship('Report', backref="user")

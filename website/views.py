@@ -19,10 +19,24 @@ def home():
 @views.route("/dashboard")
 #@login_required
 def dashboard():
+    #current_user = User.query.all()
     return render_template("dashboard.html", user=current_user)
 
-@views.route("/donate")
+@views.route("/donate", methods=["GET", "POST"])
+@login_required
 def donate():
+    if request.method == "POST":
+        donationAMT = request.form.get("Quantity")
+        #console.log(donationAMT)
+        user = User.query.filter_by(username=current_user.username).first()
+
+        try:
+            user.points = user.points - float(donationAMT)
+            print("Donated")
+            db.session.commit()
+        except:
+            flash("Please make sure you have sufficient funds.", category="error")
+    time.sleep(0.1)
     return render_template("donate.html", user=current_user)
 
 @views.route("/resolve", methods=["GET", "POST"])
@@ -39,28 +53,13 @@ def resolve():
             long = round(temp_num * 100000)/100000.0
             temp_num = float(lat)
             lat = round(temp_num * 100000)/100000.0
-            """
-            float(long)
-            temp_num = long
-            long = round(temp_num * 100000)/100000.0
-            float(lat)
-            temp_num = lat
-            lat = round(temp_num * 100000)/100000.0
-            """
-            """
-            print(len(title) + " " + len(msg))
-            if len(title) > 100:
-                flash("Title must be less than 101 characters.", category="error")
-            elif len(msg) > 250:
-                flash("Description must be less than 251 characters.", category="error")
-            else:
-            """
             user = User.query.filter_by(username=current_user.username).first()
 
             if not user.litters_cleaned:
                 user.litters_cleaned = 1
             else:
                 user.litters_cleaned = user.litters_cleaned + 1
+                user.points = user.points + 100
 
             report_to_be_removed = db.session.query(Report).filter_by(longitude=long, latitude=lat).first()
             #print("We have reached this point successfully")
@@ -100,8 +99,10 @@ def report():
                 
                 if not user.litters_found:
                     user.litters_found = 1
+
                 else:
                     user.litters_found = user.litters_found + 1
+                    user.points = user.points + 100
 
                 new_report = Report(title=title, description=msg, longitude=long, latitude=lat, user_id=user.id, date=func.now())
                 db.session.add(new_report)
