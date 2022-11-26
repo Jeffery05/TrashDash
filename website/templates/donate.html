@@ -47,7 +47,7 @@
     <div class="container body-content" style="margin-left:30%; margin-right:30%">
         <div class="row" style="margin-top: 10%;  margin-bottom: 1%;">
             <h1 style="text-align: left; margin-bottom: 2%;">
-                <bold>User: {{ current_user.username }}</bold>
+                <bold>User: {{ user.username }}</bold>
             </h1>
             <div class="col-md-8">
                 <h3>
@@ -61,7 +61,13 @@
                 <h3>total points</h3>
             </div>
             <div class="col-md-6">
-                <h3>{{ current_user.points }} pts</h3>
+                <h3>
+                {% if user.points is none %}
+                    0
+                {% else %}
+                    {{ user.points }}
+                {% endif %}
+                pts</h3>
             </div>
         </div>
         <div class="row" style="margin-bottom: 1%;">
@@ -74,7 +80,7 @@
             <div class="row" style="margin-bottom: 1%;">
                 <div class="col-md-4">
                     <label for="Quantity" class="form-label">Quantity</label>
-                    <input name="Quantity" type="number" class="form-control" id="Quantity" placeholder="Quantity"
+                    <input name="Quantity" type="number" min="0" class="form-control" id="Quantity" placeholder="Quantity"
                         value="" required>
                     <div class="invalid-feedback">
                         Valid number is required.
@@ -83,13 +89,13 @@
 
                 <div class="col-md-4">
                     <label for="charity" class="form-label">Charity</label>
-                    <select class="form-select" id="state">
-                        <option value="">Choose...</option>
-                        <option>Green Peace</option>
-                        <option>Earthjustice</option>
-                        <option>National Resources Defense Council</option>
-                        <option>350.org</option>
-                        <option>Rainforest Allliance</option>
+                    <select class="form-select" id="Charity" required>
+                        <option value="null" selected disabled>Choose...</option>
+                        <option value="Green Peace">Green Peace</option>
+                        <option value="EarthJustice">EarthJustice</option>
+                        <option value="National Resources Defense Council">National Resources Defense Council</option>
+                        <option value="350.org">350.org</option>
+                        <option value="Rainforest Alliance">Rainforest Alliance</option>
                     </select>
                 </div>
 
@@ -98,10 +104,31 @@
                 style="text-align: center; margin-top: 10%">Donate</button>
             <input type="hidden" name="_next" value="done.html">
         </form>
-
     </div>
-
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        {% if category == "error" %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     </form>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
