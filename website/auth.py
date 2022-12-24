@@ -50,9 +50,12 @@ def sign_up():
 
         print(email, username, password1, password2)
 
-        user = db.session.query(User).filter_by(email=email).first()
-        if user is not None:
+        user_email = db.session.query(User).filter_by(email=email).first()
+        user_username = db.session.query(User).filter_by(username=username).first()
+        if user_email is not None:
             flash("Email is taken.", category="error")
+        elif user_username is not None:
+            flash("Username is taken.", category="error")
         elif len(email) < 4:
             flash("Email must be greater than 3 characters.", category="error")
         elif len(username) < 2:
@@ -63,7 +66,7 @@ def sign_up():
             flash("Password must be at least 7 characters.", category="error")
         else:
             #add user to the database
-            new_user = User(email=email, password=generate_password_hash(password1, method="sha256"), username=username)#, litters_found=1, litters_cleaned=1)
+            new_user = User(email=email, password=generate_password_hash(password1, method="sha256"), username=username, litters_found=0, litters_cleaned=0, donationValue=0.0)
             print("New user:", new_user)
             
             db.session.add(new_user)
