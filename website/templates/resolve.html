@@ -114,15 +114,18 @@
                     <img src="/static/images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
                     <img src="/static/images/Trash.png" width="15 px" height="15 px" alt="Trash Can">
 
-                    <br>
+                    <br><br>
 
-                    <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
-                    <input name="longitude" type="text" id="long" required></input>
-                    <br>
-
-                    <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
-                    <input name="latitude" type="text" id="lat" required></input>
-                    
+                    <div class="input-group">
+                        <div  style="margin-right: 4%">
+                            <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
+                            <input name="longitude" type="text" class="form-control" id="long" required></input>
+                        </div> 
+                        <div>
+                            <label for="commentTextArea" class="form-label" style="margin-top: 2%">Latitude</label>
+                            <input name="latitude" type="text" class="form-control" id="lat" required></input>
+                        </div>
+                    </div>
                     <!--
                     <label for="commentTextArea" class="form-label" style="margin-top: 2%">Longitude</label>
                     <div id="long"></div>
