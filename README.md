@@ -1,3 +1,10 @@
 # TrashDash
-To deal with the problem of litter, this web application encourages citizen-led environmental cleanups! It does this by introducing a centralized litter database, where citizens can post about areas with high levels of trash so it can be cleaned up during community pickup days. As an extra incentive, users gain points whenever they report/resolve litter piles, which can be exchanged for donations to a charity of their choice! Check it out: https://trash-dash-htv.herokuapp.com/
-This product was created by Chelsea, Jeffery, and Joshua for Hack the Valley 2022.
+TrashDash is an application designed to combat litter by promoting community-led environmental cleanups. It features a centralized database where users can report locations with significant amounts of misplaced garbage, encouraging others to join and participate in the cleanup efforts. To add motivation, the application includes a points, challenges, and reward system, fostering friendly competition and aiming to unite people to build cleaner communities for all.
+
+**Website:** https://trash-dash-htv.herokuapp.com/
+
+**Demo Video:** https://www.youtube.com/watch?v=OWEOjOYz6VM
+
+**Devpost:** https://devpost.com/software/trashdash
+
+This product was created by Jeffery, Chelsea and Joshua for Hack the Valley 2022.
